@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            margin: 200px auto;
+        }
+        p{
+            text-align: center;
+        }
+        button{
+            cursor: pointer;
+            width: 200px;
+            height: 40px;
+        }
+        input{
+            width: 200px;
+            height: 40px;
+            border-radius: 3px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <p>
+        <input type="text" placeholder=" 请输入账号" id="username">
+        <input type="text" placeholder=" 请输入密码" id="pwd"></p>
+    <p><button type="button" id="adminLogin">管理员登录</button></p>
+    <p><button type="button" id="staffLogin">设计师登录</button></p>
+</div>
+<script src="js/jquery.min.js"></script>
+<!--<script src="js/ajax.js"></script>-->
+<script>
+    $("#adminLogin").click(function () {
+        let username = $("#username").val();
+        let pwd = $("#pwd").val();
+        let param = "userName="+username+"&pwd="+pwd;
+        $.post("/admin/login.admin",param, function (data) {
+            if (data.code == 200){
+                location.href = "userManage.html";
+            }
+        })
+    });
+
+    $("#staffLogin").click(function () {
+        let username = $("#username").val();
+        let pwd = $("#pwd").val();
+        let param = "userName="+username+"&pwd="+pwd;
+        console.log(param);
+        $.post("/staff/login.staff",param, function (data) {
+            if (data.code == 200){
+                location.href = "userManage.html";
+            }
+        })
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            margin: 200px auto;
+        }
+        p{
+            text-align: center;
+        }
+        button{
+            cursor: pointer;
+            width: 200px;
+            height: 40px;
+        }
+        input{
+            width: 200px;
+            height: 40px;
+            border-radius: 3px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<button id="button">点击我</button>
+<script src="js/jquery.min.js"></script>
+<!--<script src="js/ajax.js"></script>-->
+<script>
+    $("#button").click(function () {
+        let param = "2";
+        ajax("post","/user/testSession.do",param,function (data) {
+            alert(data);
+        });
+    });
+
+</script>
+</body>
+</html>
